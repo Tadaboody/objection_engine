@@ -1,5 +1,12 @@
 from PIL import Image, ImageDraw, ImageFont
 
+def is_hebrew(st):
+    if len(st) == 0:
+        return False
+    if len(st) == 1:
+        return "\u0590" <= st <= "\u05EA"
+    return any(is_hebrew(ch) for ch in st)
+
 class AnimText:
     def __init__(
         self,
@@ -19,6 +26,7 @@ class AnimText:
         self.font_path = font_path
         self.font_size = font_size
         self.colour = colour
+        self.is_hebrew = is_hebrew(self.text)
 
     def render(self, background: Image, frame: int = 0):
         draw = ImageDraw.Draw(background)
@@ -27,7 +35,8 @@ class AnimText:
             _text = _text[:frame]
         if self.font_path is not None:
             font = ImageFont.truetype(self.font_path, self.font_size)
-            draw.text((self.x, self.y), _text, font=font, fill=self.colour)
+            hebrew_args = dict(language='he',allign="right",direction="rtl") if self.is_hebrew else dict()
+            draw.text((self.x, self.y), _text, font=font, fill=self.colour,**hebrew_args)
         else:
             draw.text((self.x, self.y), _text, fill=self.colour)
         return background

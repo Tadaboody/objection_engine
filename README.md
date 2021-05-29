@@ -7,6 +7,7 @@ List of users:
 - [Discord Bot](https://github.com/LuisMayo/ace-attorney-discord-bot)
 
 This is a fork of a wonderful [Reddit bot](https://github.com/micah5/ace-attorney-reddit-bot)
+(This is a fork of that, which tries to add hebrew support)
 
 ## Getting Started
 
