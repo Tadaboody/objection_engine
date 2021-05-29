@@ -30,6 +30,7 @@ nlp = spacy.load("xx_ent_wiki_sm")
 nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
 
+HEBREW_FONT = "./assets/STANRG.ttf"
 def split_str_into_newlines(text: str, max_line_count: int = 34):
     words = text.split(" ")
     new_text = ""
@@ -85,7 +86,7 @@ def do_video(config: List[Dict], output_filename):
                 #                     current_character_name = "The Player"
                 character_name = AnimText(
                     current_character_name,
-                    font_path="assets/igiari/Igiari.ttf",
+                    font_path=HEBREW_FONT,
                     font_size=12,
                     x=4,
                     y=113,
@@ -148,7 +149,7 @@ def do_video(config: List[Dict], output_filename):
                 _colour = None if "colour" not in obj else obj["colour"]
                 text = AnimText(
                     _text,
-                    font_path="assets/igiari/Igiari.ttf",
+                    font_path=HEBREW_FONT,
                     font_size=15,
                     x=5,
                     y=130,
@@ -160,7 +161,7 @@ def do_video(config: List[Dict], output_filename):
                 if "name" in obj:
                     _character_name = AnimText(
                         obj["name"],
-                        font_path="assets/igiari/Igiari.ttf",
+                        font_path=HEBREW_FONT,
                         font_size=12,
                         x=4,
                         y=113,
